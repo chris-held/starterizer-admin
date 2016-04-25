@@ -1,0 +1,14 @@
+<md-content class="md-padding">
+    <h1>Request Logs</h1>
+    <md-progress-linear md-mode="indeterminate" ng-if="vm.loading"></md-progress-linear>
+    <md-list ng-if="!vm.loading && vm.list && vm.list.length">
+        <md-list-item class="md-2-line row-center" ng-repeat="log in vm.list track by $index">
+            <md-button ui-sref="request-log-detail({id: log.id})" class="md-fab md-mini" aria-label="view">
+                <md-icon md-font-set="material-icons" aria-label="view">visibility</md-icon>
+            </md-button>
+            <p><strong>{{log.requestMethod}} {{log.requestUrl}}</strong></p>
+            <p>{{log.createdAt | date: 'medium'}}</p>
+            <p>{{log.responseTime}}ms</p>
+        </md-list-item>
+    </md-list>
+</md-content>

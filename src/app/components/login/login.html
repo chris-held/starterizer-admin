@@ -1,0 +1,21 @@
+<md-content>
+    <form layout="column" class="md-padding-top">
+        <md-input-container>
+            <label>Username</label>
+            <input type="text" ng-model="vm.username" required>
+        </md-input-container>
+        <md-input-container>
+            <label>Password</label>
+            <input type="password" ng-model="vm.password" required>
+        </md-input-container>
+        <md-button class="md-raised md-accent" ng-click="vm.login()">Login</md-button>
+    </form>
+
+    <div class="well">
+        <p>Some users have been created for you:</p>
+        <p>u: admin p: password</p>
+        <p>or</p>
+        <p>u: superadmin p: password</p>
+    </div>
+
+</md-content>

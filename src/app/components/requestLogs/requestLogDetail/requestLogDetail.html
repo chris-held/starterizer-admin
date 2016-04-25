@@ -1,0 +1,21 @@
+<md-content class="md-padding" layout="column">
+    <h1>{{vm.model.requestMethod}} {{vm.model.requestUrl}} details</h1>
+    <section>
+        <h3>Date Received</h3>
+        <p>{{vm.model.createdAt | date:'medium'}}</p>
+        <h3>Duration</h3>
+        <p>{{vm.model.responseTime}}ms</p>
+        <div ng-if="vm.model.requestHeaders">
+        <h3><strong>Request Headers</strong></h3>
+        <pre>
+            {{vm.model.requestHeaders | json}}
+        </pre>
+        </div>
+        <div ng-if="vm.model.requestBody">
+        <h3><strong>Request Body</strong></h3>
+        <pre>
+            {{vm.model.requestBody | json}}
+        </pre>
+        </div>
+    </section>
+</md-content>

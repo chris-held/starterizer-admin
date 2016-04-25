@@ -1,0 +1,90 @@
+<!doctype html>
+<html ng-app="starterizerAdmin">
+  <head>
+    <meta charset="utf-8">
+    <title>starterizerAdmin</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+    <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
+    <!-- bower:css -->
+    <!-- run `gulp inject` to automatically populate bower styles dependencies -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:css({.tmp/serve,src}) styles/app.css -->
+    <!-- inject:css -->
+    <!-- css files will be automatically insert here -->
+    <!-- endinject -->
+    <!-- endbuild -->
+  </head>
+  <body layout="row" ng-controller="ApplicationController as vm" style="width:100%">
+    <!--[if lt IE 10]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!--this will be made into a directive, or create an ApplicationController-->
+    <md-sidenav class="site-sidenav md-sidenav-left md-whiteframe-z2"
+                md-component-id="left"
+                aria-label="Show User List"
+                md-is-locked-open="$mdMedia('gt-sm')"
+                layout="column">
+      <div class="logo-container md-padding" ui-sref="main">
+        <img src="assets/images/logo.png"/>
+      </div>
+      <md-divider></md-divider>
+      <md-list ng-show="vm.user">
+        <md-list-item>
+          <md-button ui-sref="main" class="nav-item" layout="row">
+            <md-icon flex="10" md-font-set="material-icons" aria-label="assessment">dashboard</md-icon>
+            <span flex="90">Dashboard</span>
+          </md-button>
+        </md-list-item>
+        <md-list-item>
+        <md-button ui-sref="user-list" class="nav-item" layout="row">
+          <md-icon flex="10" md-font-set="material-icons" aria-label="assessment">face</md-icon>
+          <span flex="90">Users</span>
+        </md-button>
+      </md-list-item>
+        <md-list-item ng-if="vm.isSuperadmin">
+          <md-button ui-sref="request-log-list" class="nav-item" layout="row">
+            <md-icon flex="10" md-font-set="material-icons" aria-label="assessment">assessment</md-icon>
+            <span flex="90">Request Log</span>
+          </md-button>
+        </md-list-item>
+        <md-list-item>
+          <md-button class="nav-item" layout="row" ng-click="vm.logout()">
+            <md-icon flex="10" md-font-set="material-icons" aria-label="exit to app">exit_to_app</md-icon>
+            <span flex="90">Logout</span>
+          </md-button>
+        </md-list-item>
+      </md-list>
+
+    </md-sidenav>
+    <div layout="column" class="main-container">
+      <md-toolbar layout="row">
+        <md-button ng-click="ul.toggleList()"><md-icon md-font-set="material-icons" aria-label="menu">menu</md-icon></md-button>
+        <div class="brand">Starterizer Admin Panel</div>
+      </md-toolbar>
+      <div class="md-padding" ui-view></div>
+    </div>
+
+    <!-- build:js(src) scripts/vendor.js -->
+    <!-- bower:js -->
+    <!-- run `gulp inject` to automatically populate bower script dependencies -->
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp/serve,.tmp/partials,src}) scripts/app.js -->
+    <!-- inject:js -->
+    <!-- js files will be automatically insert here -->
+    <!-- endinject -->
+
+    <!-- inject:partials -->
+    <!-- angular templates will be automatically converted in js and inserted here -->
+    <!-- endinject -->
+    <!-- endbuild -->
+
+  </body>
+</html>

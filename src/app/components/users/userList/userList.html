@@ -1,0 +1,13 @@
+<md-content class="md-padding">
+    <h1>Users</h1>
+    <md-progress-linear md-mode="indeterminate" ng-if="vm.loading"></md-progress-linear>
+    <md-list ng-if="!vm.loading && vm.users && vm.users.length">
+        <md-list-item class="md-2-line row-center" ng-repeat="user in vm.users track by $index">
+            <md-button ui-sref="user-detail({id: user.id})" class="md-fab md-mini" aria-label="edit">
+                <md-icon md-font-set="material-icons" aria-label="edit">mode_edit</md-icon>
+            </md-button>
+            <p><strong>{{user.username}}</strong></p>
+            <p>Created {{user.createdAt | date}}</p>
+        </md-list-item>
+    </md-list>
+</md-content>

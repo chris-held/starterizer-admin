@@ -1,0 +1,32 @@
+<md-content class="md-padding user-edit">
+    <h1>Edit {{vm.model.username || 'User'}}</h1>
+    <md-progress-linear md-mode="indeterminate" ng-if="vm.loading"></md-progress-linear>
+    <form layout="column" ng-if="!vm.loading">
+        <md-input-container>
+            <label>Username</label>
+            <input type="text" ng-model="vm.model.username">
+        </md-input-container>
+        <md-button class="md-raised md-accent" ng-click="vm.update()">Save</md-button>
+        <p class="md-caption">Hopefully your user model is a little more interesting than this.</p>
+    </form>
+
+    <h2>Actions</h2>
+    <form layout="column" ng-if="!vm.loading">
+        <h3>Change Password</h3>
+        <md-divider></md-divider>
+        <md-input-container>
+            <label>New Password</label>
+            <input type="text" ng-model="vm.newPassword">
+        </md-input-container>
+        <md-input-container>
+            <label>Confirm Password</label>
+            <input type="text" ng-model="vm.confirmPassword">
+        </md-input-container>
+        <md-button class="md-raised md-accent" ng-click="vm.changePassword()">Submit</md-button>
+
+        <h3>Current Roles</h3>
+        <md-chips ng-model="vm.model.roles" readonly="true">
+        </md-chips>
+        <md-button class="md-raised" ng-click="vm.updateRoles()">Promote to Admin</md-button>
+    </form>
+</md-content>
