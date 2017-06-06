@@ -3,6 +3,8 @@
     <section>
         <h3>Date Received</h3>
         <p>{{vm.model.createdAt | date:'medium'}}</p>
+        <h3>Response</h3>
+        <p>{{vm.model.responseStatus}}</p>
         <h3>Duration</h3>
         <p>{{vm.model.responseTime}}ms</p>
         <div ng-if="vm.model.requestHeaders">

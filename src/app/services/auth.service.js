@@ -3,7 +3,6 @@ angular.module('starterizerAdmin')
     function ($log, Restangular, IdentityService, $window) {
 
       return {
-        user: $window.localStorage['user'] ? JSON.parse($window.localStorage['user']) : null,
         login: function(options, cb) {
           var me = this;
           Restangular.one('auth/login/').customPOST(options)
@@ -12,7 +11,9 @@ angular.module('starterizerAdmin')
               if (result.success) {
                 //store the API key token using the IdentityService
                 IdentityService.setToken(result.token);
-                $window.localStorage['user'] = JSON.stringify(result.user);
+                IdentityService.setUser(result.user);
+                //$window.localStorage['user'] = JSON.stringify(result.user);
+                //me.user = result.user;
                 cb(null, result.user);
               } else {
                 cb("Unable to authenticate. Please make sure your username and password are correct.");
@@ -25,14 +26,27 @@ angular.module('starterizerAdmin')
             });
         },
 
+        register: function(model, cb) {
+          var me = this;
+          Restangular.one('user/').customPOST(model)
+            .then(function(result){
+              $log.log("Register result", result);
+              cb(null);
+            })
+            .catch(function(error){
+              $log.log("Login error", error);
+              return cb(error);
+            });
+        },
+
         logout: function(cb) {
           var me = this;
           Restangular.one('auth/logout/').customPOST()
             .then(function(result){
               $log.log("Logout result", result);
-              IdentityService.clearToken();
               if (result.success) {
-                $window.localStorage['user'] = null;
+                IdentityService.clearToken();
+                IdentityService.clearUser();
                 return cb(null, result);
               } else {
                 return cb(result.message || "Logout failed. Please try again")

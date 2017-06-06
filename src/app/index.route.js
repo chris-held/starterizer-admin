@@ -40,6 +40,12 @@
         controller: 'UserListController',
         controllerAs: 'vm'
       })
+      .state('user-create', {
+        url: "/users/new",
+        templateUrl: 'app/components/users/userCreate/userCreate.html',
+        controller: 'UserCreateController',
+        controllerAs: 'vm'
+      })
       .state('user-detail', {
         url: "/users/:id",
         templateUrl: 'app/components/users/userDetail/userDetail.html',
@@ -57,6 +63,14 @@
         templateUrl: 'app/components/requestLogs/requestLogDetail/requestLogDetail.html',
         controller: 'RequestLogDetailController',
         controllerAs: 'vm'
+      })
+      .state('404', {
+        url: "/404",
+        templateUrl: 'app/components/errors/404.html'
+      })
+      .state('500', {
+        url: "/500",
+        templateUrl: 'app/components/errors/500.html'
       })
     ;
   }

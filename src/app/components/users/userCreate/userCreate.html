@@ -1,0 +1,18 @@
+<md-content class="md-padding user-edit">
+    <h1>Create User</h1>
+    <form layout="column">
+        <md-input-container>
+            <label>Username</label>
+            <input type="text" ng-model="vm.model.username">
+        </md-input-container>
+        <md-input-container>
+            <label>Password</label>
+            <input type="text" ng-model="vm.model.password">
+        </md-input-container>
+        <md-input-container>
+            <label>Confirm Password</label>
+            <input type="text" ng-model="vm.model.passwordConfirm">
+        </md-input-container>
+        <md-button class="md-raised md-accent" ng-click="vm.save()">Create</md-button>
+    </form>
+</md-content>

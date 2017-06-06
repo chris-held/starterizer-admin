@@ -6,11 +6,11 @@
     .run(runBlock);
 
   /** @ngInject */
-  function runBlock($log, $rootScope, $timeout, IdentityService, AuthService) {
+  function runBlock($log, $rootScope, $timeout, IdentityService) {
     $log.debug('runBlock end');
-    if (IdentityService.apiToken) {
+    if (IdentityService.apiToken && IdentityService.user) {
       $timeout(function(){
-        $rootScope.$broadcast('authenticated', AuthService.user);
+        $rootScope.$broadcast('authenticated', IdentityService.user);
       });
     }
   }

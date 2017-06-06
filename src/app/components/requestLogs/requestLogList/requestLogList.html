@@ -9,6 +9,12 @@
             <p><strong>{{log.requestMethod}} {{log.requestUrl}}</strong></p>
             <p>{{log.createdAt | date: 'medium'}}</p>
             <p>{{log.responseTime}}ms</p>
+            <p>{{log.responseStatus}}</p>
         </md-list-item>
     </md-list>
+    <pagination pagination-options="paginationOptions"></pagination>
+    <!--<div layout="row" layout-align="space-between">-->
+        <!--<md-button ng-click="vm.prevPage()"><md-icon md-font-set="material-icons" aria-label="view">navigate_before</md-icon> Prev</md-button>-->
+        <!--<md-button ng-click="vm.nextPage()">Next <md-icon md-font-set="material-icons" aria-label="view">navigate_next</md-icon></md-button>-->
+    <!--</div>-->
 </md-content>

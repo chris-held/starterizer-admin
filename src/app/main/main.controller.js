@@ -6,18 +6,28 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController(DashboardService, AuthService) {
+  function MainController(DashboardService, IdentityService, toastr) {
     var vm = this;
     vm.userCount = null;
-    var user = AuthService.user;
-    vm.isSuperadmin = _.find(user.roles, function(r){
-      return r === "superadmin";
-    });
+    vm.requestCount = null;
+    vm.isSuperadmin = false;
     DashboardService.users({}, function(err, result){
       if (err) {
-        //TODO - show an error
+        toastr.error(err);
       } else {
+        var user = IdentityService.user;
+        vm.isSuperadmin = _.find(user.roles, function(r){
+          return r === "superadmin";
+        });
         vm.userCount = result.count;
+      }
+    });
+
+    DashboardService.requests({}, function(err, result){
+      if (err) {
+        toastr.error(err);
+      } else {
+        vm.requestCount = result.count;
       }
     })
   }

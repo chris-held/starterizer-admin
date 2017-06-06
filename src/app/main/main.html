@@ -4,8 +4,7 @@
     <section class="md-padding">
       <h2>Ahoy Hoy!</h2>
       <p>This is the main dashboard for the app. You could put some cool graphs here, any important news, etc.
-      To get you started, there are two sets of data here: your total user count and users per week, as well as some basic info
-      about your API. Only superadmins can see API statistics.</p>
+      To get you started, there are two sets of data here: your total user count and total requests against the API. Only superadmins can see API statistics.</p>
       <md-card ng-if="vm.userCount">
         <md-card-header>
           <md-toolbar class="md-accent">
@@ -19,11 +18,10 @@
       <md-card ng-if="vm.isSuperadmin">
         <md-card-header>
           <md-toolbar class="md-accent">
-            <p>Requests Today: {{vm.requestCount}}</p>
+            <p>Total Requests: {{vm.requestCount}}</p>
           </md-toolbar>
         </md-card-header>
         <md-card-content>
-          <p>Errors: {{vm.requestErrors}}</p>
           <p class="md-caption">This content is hidden to non super admins</p>
         </md-card-content>
       </md-card>

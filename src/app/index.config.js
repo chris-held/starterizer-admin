@@ -49,6 +49,13 @@
             toastr.error('Please login to continue', 'Error');
             $state.go('login');
           }
+          if (response.status === 404) {
+            $state.go('404');
+          }
+
+          if (response.status === 400 || response.status === 500 || response.status <= 0) {
+            $state.go('500');
+          }
           return $q.reject(response);
         }
       };
